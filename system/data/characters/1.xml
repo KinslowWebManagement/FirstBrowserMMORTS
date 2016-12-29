@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characters>
+	<character no="1">
+		<name>killajk2201</name>
+		<level>1</level>
+		<xp>0</xp>
+		<inv>
+			<slot no="1">Empty</slot>
+			<slot no="2">Empty</slot>
+			<slot no="3">Empty</slot>
+			<slot no="4">Empty</slot>
+			<slot no="5">Empty</slot>
+			<slot no="6">Empty</slot>
+			<slot no="7">Empty</slot>
+			<slot no="8">Empty</slot>
+			<slot no="9">Empty</slot>
+		</inv>
+		<equip>
+			<slot no="1">Empty</slot>
+			<slot no="2">Empty</slot>
+			<slot no="3">Empty</slot>
+			<slot no="4">Empty</slot>
+			<slot no="5">Empty</slot>
+			<slot no="6">Empty</slot>
+		</equip>
+	</character>
+</characters>
