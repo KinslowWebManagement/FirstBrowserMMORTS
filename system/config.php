@@ -6,7 +6,7 @@
 	// Change this to whatever your mysql information is.
 	$dbserver = "localhost";
 	$dbuser = "root";
-	$dbpass = "";
+	$dbpass = 'wx4mXBw3';
 	$db = "browsergametutorial";
 
 	$conn = mysqli_connect($dbserver, $dbuser, $dbpass, $db);

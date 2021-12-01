@@ -1,6 +1,7 @@
 <?php
 	require_once("system/functions.php");
 	require_once("system/config.php");
+	ini_set("display_errors", "true");
 	if ($maintenance == true){
 		echo "This Website is currently down for maintenance!";
 	}
@@ -64,7 +65,8 @@
 		die("Email Address already used for another account!");
 	}
 	// Echo saying username and email available
-	//echo "Username and Email Address Available!";
+	//echo "Username and Email Address Available!"
+	//$passHash = password_hash($pass);
 
 	$sql = "INSERT INTO Users (Username, Password, Email) VALUES ('" . $user . "', '" . $pass . "', '" . $email . "')";
 	if (mysqli_query($conn, $sql)) {
@@ -78,32 +80,26 @@
 
 	if (mysqli_num_rows($result) == 1){
 		$row = mysqli_fetch_assoc($result);
-		$userId = $row["UserID"];
+		$userId = $row["id"];
 	} else {
 		die ("Unable to fetch UserID!");
 	}
 
-	if (copy("system/data/characters/template.xml", "system/data/characters/" . $userId . ".xml") == 1) {
+	if (1 == 1) {
 		$filepath = "system/data/characters/" . $userId . ".xml";
-		$file = fopen($filepath, "r+");
+		$file = fopen($filepath, "a+");
 		if (!$file){
 			die("Error opening characters file!");
 		}else{
-			$Read = fread($file, filesize($filepath));
-			if (!$Read){
-				die("Error reading from characters file!");
-			}else{
-				fclose($file);
-			}
+			fclose($file);
+			$userCharacter = simplexml_load_file("system/data/characters/template.xml");
+			$userCharacter->character[0]->name = $user;
+			$userCharacter->saveXML($filepath);
+			echo "Successfully wrote Character file.";
 		}
 	}else{
 		die("Error copying characters template file!");
 	}
-	$placeholder = "Placeholder";
-	$limit = 1;
-	echo "\r\n".$Read;
-	echo preg_replace("Placeholder", $user, $Read, $limit, $count);
-	echo "\r\n" . $count;
 
 	// Tie up any loose ends
 	mysqli_close($conn);
